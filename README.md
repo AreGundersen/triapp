@@ -1,6 +1,8 @@
 # Are 70.3 – treningsapp
 
 Installerbar webapp (PWA) for 70.3-programmet mot **Efjord Extreme, Narvik, 7. august 2027**.
+> Arbeidsnotat og status: se [HANDOFF.md](HANDOFF.md).
+
 Samme data på PC og iPhone via Supabase, økter hentes fra Strava.
 
 ```
