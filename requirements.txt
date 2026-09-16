@@ -1,0 +1,5 @@
+streamlit>=1.38
+pandas
+plotly
+requests
+supabase>=2.5

@@ -1,0 +1,128 @@
+[
+ {
+  "dag": "Man",
+  "ukedag": 1,
+  "slot": "morgen",
+  "tid": "07:00",
+  "base": "Push",
+  "bygg1": "Push",
+  "bygg2": "Push"
+ },
+ {
+  "dag": "Man",
+  "ukedag": 1,
+  "slot": "kveld",
+  "tid": "18:00",
+  "base": "Svøm teknikk 30–40 min",
+  "bygg1": "Svøm teknikk 40 min",
+  "bygg2": "Svøm lang 45–60 min"
+ },
+ {
+  "dag": "Tir",
+  "ukedag": 2,
+  "slot": "morgen",
+  "tid": "07:00",
+  "base": "Løp intervall (6x3 min Z4)",
+  "bygg1": "Løp tempo 3x10 min",
+  "bygg2": "Løp intervall"
+ },
+ {
+  "dag": "Tir",
+  "ukedag": 2,
+  "slot": "kveld",
+  "tid": "16:00",
+  "base": "Pull",
+  "bygg1": "Pull",
+  "bygg2": "Bein B – forebyggende"
+ },
+ {
+  "dag": "Ons",
+  "ukedag": 3,
+  "slot": "morgen",
+  "tid": "07:30",
+  "base": "Rolig sykkel 45 min (valgfri)",
+  "bygg1": "Fri / mobilitet",
+  "bygg2": "Rolig løp 40 min"
+ },
+ {
+  "dag": "Ons",
+  "ukedag": 3,
+  "slot": "kveld",
+  "tid": "17:30",
+  "base": "Bein A – tung",
+  "bygg1": "Bein A – tung (redusert)",
+  "bygg2": "Sykkel klatreterskel 4x8 min"
+ },
+ {
+  "dag": "Tor",
+  "ukedag": 4,
+  "slot": "morgen",
+  "tid": "07:00",
+  "base": "Sykkel Z2 60–75 min (rulle) – ingen løping",
+  "bygg1": "Sykkel Z2 60 min – ingen løping",
+  "bygg2": "Sykkel Z2 60 min"
+ },
+ {
+  "dag": "Tor",
+  "ukedag": 4,
+  "slot": "kveld",
+  "tid": "17:45",
+  "base": "Svøm utholdenhet 30–45 min",
+  "bygg1": "Svøm CSS",
+  "bygg2": "Svøm CSS"
+ },
+ {
+  "dag": "Fre",
+  "ukedag": 5,
+  "slot": "morgen",
+  "tid": "07:00",
+  "base": "Rolig løp 40 min Z2",
+  "bygg1": "Rolig løp 40–50 min",
+  "bygg2": "Rolig løp 50 min"
+ },
+ {
+  "dag": "Fre",
+  "ukedag": 5,
+  "slot": "kveld",
+  "tid": "17:30",
+  "base": "Sykkel sweet spot 3x10 min (annenhver uke)",
+  "bygg1": "Sykkel terskel 2x20 min + Upper body",
+  "bygg2": "Pull / Upper"
+ },
+ {
+  "dag": "Lør",
+  "ukedag": 6,
+  "slot": "morgen",
+  "tid": "10:00",
+  "base": "Langtur sykkel 90–150 min Z2",
+  "bygg1": "Langtur sykkel 2.5–3.5 t + brick 15 min",
+  "bygg2": "Langtur sykkel 3.5–4.5 t KUPERT i 70.3-tempo + brick 30–45 min"
+ },
+ {
+  "dag": "Lør",
+  "ukedag": 6,
+  "slot": "kveld",
+  "tid": "16:00",
+  "base": "Bein B – forebyggende",
+  "bygg1": "Bein B – forebyggende",
+  "bygg2": "Fri"
+ },
+ {
+  "dag": "Søn",
+  "ukedag": 7,
+  "slot": "morgen",
+  "tid": "10:00",
+  "base": "Langtur løp 12–16 km Z2",
+  "bygg1": "Langtur løp 16–18 km",
+  "bygg2": "Langtur løp 18–21 km terreng/bakker, 6–8 km i 70.3-tempo"
+ },
+ {
+  "dag": "Søn",
+  "ukedag": 7,
+  "slot": "kveld",
+  "tid": "17:45",
+  "base": "Svøm (valgfri) 30 min",
+  "bygg1": "Svøm lang / åpent vann",
+  "bygg2": "Svøm åpent vann m/ våtdrakt"
+ }
+]

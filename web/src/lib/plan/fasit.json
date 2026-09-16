@@ -1,0 +1,313 @@
+{
+ "prognose_default": {
+  "svom": 3078.0,
+  "t1": 360,
+  "sykkel": 13224.489795918367,
+  "t2": 180,
+  "lop": 7795.955304705127,
+  "total": 24638.445100623492,
+  "css": 150.0,
+  "ftp": 178.0,
+  "kg": 80.0,
+  "k5": 1357,
+  "hm": 6537
+ },
+ "prognose_uke12": {
+  "svom": 2872.8,
+  "t1": 360,
+  "sykkel": 12621.21105668959,
+  "t2": 180,
+  "lop": 7607.921542424181,
+  "total": 23641.93259911377,
+  "css": 140.0,
+  "ftp": 190.0,
+  "kg": 79.0,
+  "k5": 1290.0,
+  "hm": 6537
+ },
+ "prognose_uke5": {
+  "svom": 2872.8,
+  "t1": 360,
+  "sykkel": 13125.056705895455,
+  "t2": 180,
+  "lop": 7607.921542424181,
+  "total": 24145.778248319635,
+  "css": 140.0,
+  "ftp": 178.0,
+  "kg": 79.0,
+  "k5": 1290.0,
+  "hm": 6537
+ },
+ "uke_for": {
+  "2026-09-14": 1,
+  "2026-09-16": 1,
+  "2026-09-20": 1,
+  "2026-09-21": 2,
+  "2027-08-07": 47,
+  "2026-09-13": 0
+ },
+ "fase_for": {
+  "1": "Overgang",
+  "4": "Overgang",
+  "5": "Grunnlag",
+  "16": "Grunnlag",
+  "17": "Bygg 1",
+  "28": "Bygg 1",
+  "29": "Bygg 2 – spesifikk",
+  "40": "Bygg 2 – spesifikk",
+  "41": "Topp",
+  "44": "Topp",
+  "45": "Nedtrapping",
+  "46": "Nedtrapping",
+  "47": "LØPSUKE",
+  "48": "Utenfor planen",
+  "0": "Utenfor planen"
+ },
+ "dagens_okter": {
+  "2026-09-16": {
+   "morgen": [
+    "07:30",
+    "Rolig sykkel 45 min (valgfri)"
+   ],
+   "kveld": [
+    "17:30",
+    "Bein A – tung"
+   ]
+  },
+  "2026-11-05": {
+   "morgen": [
+    "07:00",
+    "Sykkel Z2 60–75 min (rulle) – ingen løping"
+   ],
+   "kveld": [
+    "17:45",
+    "Svøm utholdenhet 30–45 min"
+   ]
+  },
+  "2027-02-06": {
+   "morgen": [
+    "10:00",
+    "Langtur sykkel 2.5–3.5 t + brick 15 min"
+   ],
+   "kveld": [
+    "16:00",
+    "Bein B – forebyggende"
+   ]
+  },
+  "2027-05-09": {
+   "morgen": [
+    "10:00",
+    "Langtur løp 18–21 km terreng/bakker, 6–8 km i 70.3-tempo"
+   ],
+   "kveld": [
+    "17:45",
+    "Svøm åpent vann m/ våtdrakt"
+   ]
+  },
+  "2027-06-27": {
+   "morgen": [
+    "10:00",
+    "Langtur løp 18–21 km terreng/bakker, 6–8 km i 70.3-tempo"
+   ],
+   "kveld": [
+    "17:45",
+    "Svøm åpent vann m/ våtdrakt"
+   ]
+  }
+ },
+ "styrkeokt_i": {
+  "Push": [
+   "DB Bench Press / Bench Press",
+   "Smith Incline Bench Press",
+   "Pec Dec",
+   "Skull-Crushers / Overhead Ext.",
+   "Tricep Push Down",
+   "Cable Lat Raise"
+  ],
+  "Bein A – tung (redusert)": [
+   "Pendulum Squat",
+   "Romanian Deadlift",
+   "Bulgarian Split Squat",
+   "Lying Leg Curl",
+   "Calf Raise, rett kne"
+  ],
+  "Sykkel terskel 2x20 min + Upper body": [
+   "DB Incline Bench Press",
+   "Pull Downs",
+   "Dips",
+   "Chest Supported Row",
+   "Reverse Flys",
+   "Lateral Raise"
+  ],
+  "Pull / Upper": [
+   "Pullups",
+   "T-bar Row",
+   "Close-Grip Cable Row",
+   "Reverse Fly",
+   "Preacher Curl",
+   "Hammer Curl",
+   "Shrugs"
+  ],
+  "Bein B – forebyggende": [
+   "Sidegange med strikk",
+   "Hip Thrust",
+   "Abductor",
+   "Adductor",
+   "Step-up (høy kasse)",
+   "Clamshell",
+   "Copenhagen Plank",
+   "Calf Raise, bøyd kne",
+   "Tåhopp / hoppetau"
+  ],
+  "Svøm CSS": null
+ },
+ "xp": {
+  "xp": 79,
+  "niva": 1,
+  "navn": "Nybegynner",
+  "til_neste": 421,
+  "andel": 0.158
+ },
+ "merker_uke3": [
+  [
+   "Våt bak ørene",
+   "Første svømmeøkt",
+   true
+  ],
+  [
+   "Fem på rad",
+   "En uke med 5+ økter",
+   true
+  ],
+  [
+   "Hundrekilometer",
+   "100 km løp siden start",
+   false
+  ],
+  [
+   "Sadelsår",
+   "Sykkeltur over 2,5 t",
+   true
+  ],
+  [
+   "Fisk",
+   "1,9 km svøm i ett strekk",
+   false
+  ],
+  [
+   "Tusenkunstner",
+   "1 000 km sykkel siden start",
+   false
+  ],
+  [
+   "Halvveis",
+   "Uke 24 passert",
+   false
+  ],
+  [
+   "Jernvilje",
+   "25 styrkeøkter siden start",
+   false
+  ],
+  [
+   "Løpsklar",
+   "Løpsuka er her",
+   false
+  ]
+ ],
+ "merker_uke24": [
+  [
+   "Våt bak ørene",
+   "Første svømmeøkt",
+   true
+  ],
+  [
+   "Fem på rad",
+   "En uke med 5+ økter",
+   true
+  ],
+  [
+   "Hundrekilometer",
+   "100 km løp siden start",
+   false
+  ],
+  [
+   "Sadelsår",
+   "Sykkeltur over 2,5 t",
+   true
+  ],
+  [
+   "Fisk",
+   "1,9 km svøm i ett strekk",
+   false
+  ],
+  [
+   "Tusenkunstner",
+   "1 000 km sykkel siden start",
+   false
+  ],
+  [
+   "Halvveis",
+   "Uke 24 passert",
+   true
+  ],
+  [
+   "Jernvilje",
+   "25 styrkeøkter siden start",
+   false
+  ],
+  [
+   "Løpsklar",
+   "Løpsuka er her",
+   false
+  ]
+ ],
+ "ernaering": {
+  "2026-09-16": {
+   "dagstype": "Vanlig treningsdag",
+   "karbo": "320–480 g",
+   "protein": "128–160 g",
+   "vaeske": "2,5–3,5 l + 500–800 ml/t under trening",
+   "for_": "Lett: banan eller brødskive, eller fastende hvis under 60 min rolig.",
+   "under": "Vann er nok.",
+   "etter": "Innen 60 min: 80 g karbo + 32 g protein. To økter samme dag: ikke valgfritt.",
+   "kveld": "Middag med protein og karbo etter styrken, + 30–40 g protein før du legger deg."
+  },
+  "2026-09-19": {
+   "dagstype": "Hard / lang dag",
+   "karbo": "480–640 g",
+   "protein": "128–160 g",
+   "vaeske": "3–4 l + 500–800 ml/t under trening",
+   "for_": "Frokost 2–3 t før: 1–2 g/kg karbo (havregrøt, brød, banan).",
+   "under": "60–90 g karbo/t fra første time. Tren magen – dette er løpsdagsrutinen.",
+   "etter": "Innen 60 min: 80 g karbo + 32 g protein. To økter samme dag: ikke valgfritt.",
+   "kveld": "Middag med protein og karbo etter styrken, + 30–40 g protein før du legger deg."
+  },
+  "2027-05-08": {
+   "dagstype": "Hard / lang dag",
+   "karbo": "480–640 g",
+   "protein": "128–160 g",
+   "vaeske": "3–4 l + 500–800 ml/t under trening",
+   "for_": "Frokost 2–3 t før: 1–2 g/kg karbo (havregrøt, brød, banan).",
+   "under": "60–90 g karbo/t fra første time. Tren magen – dette er løpsdagsrutinen.",
+   "etter": "Innen 60 min: 80 g karbo + 32 g protein. To økter samme dag: ikke valgfritt.",
+   "kveld": "Fyll opp: stor middag med karbo. Morgendagen starter med det du spiser i kveld."
+  },
+  "2027-05-09": {
+   "dagstype": "Hard / lang dag",
+   "karbo": "480–640 g",
+   "protein": "128–160 g",
+   "vaeske": "3–4 l + 500–800 ml/t under trening",
+   "for_": "Frokost 2–3 t før: 1–2 g/kg karbo (havregrøt, brød, banan).",
+   "under": "60–90 g karbo/t fra første time. Tren magen – dette er løpsdagsrutinen.",
+   "etter": "Innen 60 min: 80 g karbo + 32 g protein. To økter samme dag: ikke valgfritt.",
+   "kveld": "Fyll opp: stor middag med karbo. Morgendagen starter med det du spiser i kveld."
+  }
+ },
+ "fmt": {
+  "fmt_hms_6h29": "6:29",
+  "fmt_hms_45min": "45 min",
+  "fmt_ms_150": "2:30",
+  "fmt_ms_129_6": "2:10"
+ }
+}

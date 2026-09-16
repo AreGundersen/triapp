@@ -1,0 +1,48 @@
+uke,mandag,fase,svom_okter,svom_km,sykkel_okter,sykkel_t,lop_okter,lop_km,styrke_okter,timer,fokus
+1,2026-09-14,Overgang,2,1.5,2,2,3,20,2,6.6,Restitusjonsuke etter halvmaraton (1:48:57). Rolig alt. Ny fase: Overgang → se arket «Faser».
+2,2026-09-21,Overgang,2,1.8,2,2.2,3,23,2,7.2,–
+3,2026-09-28,Overgang,2,2.2,2,2.3,3,25,2,7.7,–
+4,2026-10-05,Overgang,2,1.8,2,1.8,3,20,2,6.5,DELOAD. Test: 5 km løp + 400 m svøm (baseline)
+5,2026-10-12,Grunnlag,2.5,3,2.5,3,3,30,2,9.2,Ny fase: Grunnlag → se arket «Faser».
+6,2026-10-19,Grunnlag,2.5,3.2,2.5,3.1,3,31,2,9.5,–
+7,2026-10-26,Grunnlag,2.5,3.4,2.5,3.3,3,31,2,9.8,–
+8,2026-11-02,Grunnlag,2.5,2.5,2.5,2.4,3,22,2,7.6,DELOAD. Søn 01.11: E18-løpet 15 km (venteliste) – erstatter intervaller og langtur.
+9,2026-11-09,Grunnlag,2.5,3.7,2.5,3.5,3,33,2,10.3,–
+10,2026-11-16,Grunnlag,2.5,3.9,2.5,3.7,3,34,2,10.7,–
+11,2026-11-23,Grunnlag,2.5,4.1,2.5,3.8,3,34,2,10.8,–
+12,2026-11-30,Grunnlag,2.5,3,2.5,2.8,3,25,2,8.5,DELOAD. Test: 20-min FTP (sykkel) + 5 km løp
+13,2026-12-07,Grunnlag,2.5,4.5,2.5,4.1,3,36,2,11.5,–
+14,2026-12-14,Grunnlag,2.5,4.6,2.5,4.2,3,37,2,11.7,–
+15,2026-12-21,Grunnlag,2.5,4.8,2.5,4.4,3,37,2,12.0,–
+16,2026-12-28,Grunnlag,2.5,3.5,2.5,3.1,3,27,2,9.2,DELOAD.
+17,2027-01-04,Bygg 1,3,5,3,4.5,3.5,38,2,12.3,Ny fase: Bygg 1 → se arket «Faser».
+18,2027-01-11,Bygg 1,3,5.1,3,4.6,3.5,39,2,12.5,–
+19,2027-01-18,Bygg 1,3,5.3,3,4.8,3.5,39,2,12.8,–
+20,2027-01-25,Bygg 1,3,3.8,3,3.4,3.5,28,2,9.7,DELOAD. Test: 400 m svøm (CSS) + 20-min FTP
+21,2027-02-01,Bygg 1,3,5.5,3,5,3.5,40,2,13.2,–
+22,2027-02-08,Bygg 1,3,5.7,3,5.2,3.5,41,2,13.6,–
+23,2027-02-15,Bygg 1,3,5.8,3,5.3,3.5,41,2,13.7,–
+24,2027-02-22,Bygg 1,3,4.2,3,3.8,3.5,29,2,10.4,DELOAD.
+25,2027-03-01,Bygg 1,3,6.1,3,5.6,3.5,42,2,14.2,–
+26,2027-03-08,Bygg 1,3,6.2,3,5.7,3.5,43,2,14.5,–
+27,2027-03-15,Bygg 1,3,6.4,3,5.9,3.5,43,2,14.8,–
+28,2027-03-22,Bygg 1,3,4.5,3,4.2,3.5,31,2,11.1,DELOAD. Test: 5 km løp + 1000 m svøm
+29,2027-03-29,Bygg 2 – spesifikk,3,6.5,3,6,4,44,1.5,14.5,Ny fase: Bygg 2 – spesifikk → se arket «Faser».
+30,2027-04-05,Bygg 2 – spesifikk,3,6.6,3,6.2,4,45,1.5,14.8,–
+31,2027-04-12,Bygg 2 – spesifikk,3,6.7,3,6.4,4,45,1.5,15.1,–
+32,2027-04-19,Bygg 2 – spesifikk,3,4.7,3,4.6,4,32,1.5,11.2,"DELOAD. Lør 24.04: Dyreparken 10 km – hard tempoøkt, ikke full deload."
+33,2027-04-26,Bygg 2 – spesifikk,3,6.9,3,6.7,4,46,1.5,15.6,–
+34,2027-05-03,Bygg 2 – spesifikk,3,7,3,6.9,4,47,1.5,15.9,–
+35,2027-05-10,Bygg 2 – spesifikk,3,7,3,7.1,4,47,1.5,16.1,–
+36,2027-05-17,Bygg 2 – spesifikk,3,5,3,5.1,4,34,1.5,12,DELOAD. Test: 20-min FTP + 1000 m svøm
+37,2027-05-24,Bygg 2 – spesifikk,3,7.2,3,7.5,4,48,1.5,16.7,–
+38,2027-05-31,Bygg 2 – spesifikk,3,7.3,3,7.6,4,49,1.5,16.9,–
+39,2027-06-07,Bygg 2 – spesifikk,3,7.4,3,7.8,4,49,1.5,17.2,–
+40,2027-06-14,Bygg 2 – spesifikk,3,5.2,3,5.6,4,35,1.5,12.7,DELOAD. Test-løp anbefalt: olympisk distanse (1.5/40/10) ca. denne helgen
+41,2027-06-21,Topp,3,7.5,3,8,4,50,1,17,Ny fase: Topp → se arket «Faser».
+42,2027-06-28,Topp,3,7.5,3,8.2,4,49,1,17.1,Løpssimulering denne helgen.
+43,2027-07-05,Topp,3,7.5,3,8.3,4,49,1,17.2,–
+44,2027-07-12,Topp,3,7.5,3,8.5,4,48,1,17.3,–
+45,2027-07-19,Nedtrapping,3,6,3,6,3,35,1,12.9,Ny fase: Nedtrapping → se arket «Faser».
+46,2027-07-26,Nedtrapping,3,4,3,4,3,25,1,9.1,–
+47,2027-08-02,LØPSUKE,2,2.5,2,2,2,12,0,4.2,Ny fase: LØPSUKE → se arket «Faser». Lørdag 07.08: Efjord Extreme 70.3. Mål under 6:30. Reis til Narvik tirs/ons.

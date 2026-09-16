@@ -1,0 +1,514 @@
+[
+ {
+  "dato": "2026-06-02",
+  "type": "Løp",
+  "km": 21.9,
+  "minutter": 150,
+  "navn": "Løping 22 km Porsgrunn",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-04",
+  "type": "Løp",
+  "km": 5.4,
+  "minutter": 36,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-10",
+  "type": "Løp",
+  "km": 5.7,
+  "minutter": 48,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-14",
+  "type": "Løp",
+  "km": 5.6,
+  "minutter": 36,
+  "navn": "S5",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-14",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 91,
+  "navn": "Pull",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-14",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 108,
+  "navn": "Push",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-15",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 58,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-19",
+  "type": "Løp",
+  "km": 6.4,
+  "minutter": 38,
+  "navn": "Løpetur",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-22",
+  "type": "Løp",
+  "km": 6.4,
+  "minutter": 52,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-24",
+  "type": "Løp",
+  "km": 15.1,
+  "minutter": 112,
+  "navn": "Løping 15 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-26",
+  "type": "Løp",
+  "km": 2.7,
+  "minutter": 13,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-28",
+  "type": "Løp",
+  "km": 21.1,
+  "minutter": 154,
+  "navn": "Løping 21 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-06-29",
+  "type": "Løp",
+  "km": 4.2,
+  "minutter": 27,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-02",
+  "type": "Løp",
+  "km": 4.9,
+  "minutter": 32,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-03",
+  "type": "Løp",
+  "km": 4,
+  "minutter": 27,
+  "navn": "Løpetur",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-07",
+  "type": "Løp",
+  "km": 8.9,
+  "minutter": 61,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-12",
+  "type": "Løp",
+  "km": 5.6,
+  "minutter": 42,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-17",
+  "type": "Løp",
+  "km": 16.1,
+  "minutter": 113,
+  "navn": "Løping 16 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-18",
+  "type": "Løp",
+  "km": 17.8,
+  "minutter": 172,
+  "navn": "Løping Birkenes",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-20",
+  "type": "Løp",
+  "km": 5.1,
+  "minutter": 26,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-21",
+  "type": "Løp",
+  "km": 5.2,
+  "minutter": 27,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-22",
+  "type": "Løp",
+  "km": 5.4,
+  "minutter": 43,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-23",
+  "type": "Løp",
+  "km": 10.1,
+  "minutter": 55,
+  "navn": "Løping 10 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-25",
+  "type": "Løp",
+  "km": 6.1,
+  "minutter": 39,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-26",
+  "type": "Løp",
+  "km": 5.1,
+  "minutter": 31,
+  "navn": "Brick run",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-26",
+  "type": "Sykkel",
+  "km": 0,
+  "minutter": 30,
+  "navn": "Sykkel innendørs",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-27",
+  "type": "Løp",
+  "km": 9.1,
+  "minutter": 64,
+  "navn": "Løping Lillesand",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-29",
+  "type": "Løp",
+  "km": 5,
+  "minutter": 23,
+  "navn": "5 km 22:40",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-30",
+  "type": "Løp",
+  "km": 6.4,
+  "minutter": 41,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-30",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 35,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-31",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 36,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-07-31",
+  "type": "Sykkel",
+  "km": 0,
+  "minutter": 91,
+  "navn": "Sykkel innendørs",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-01",
+  "type": "Løp",
+  "km": 21.5,
+  "minutter": 143,
+  "navn": "Løping 21 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-01",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 34,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-03",
+  "type": "Løp",
+  "km": 5.7,
+  "minutter": 38,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-03",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 57,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-04",
+  "type": "Løp",
+  "km": 1.6,
+  "minutter": 9,
+  "navn": "Oppvarming",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-04",
+  "type": "Løp",
+  "km": 4.8,
+  "minutter": 25,
+  "navn": "4x4",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-06",
+  "type": "Løp",
+  "km": 5.4,
+  "minutter": 36,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-07",
+  "type": "Løp",
+  "km": 21.3,
+  "minutter": 150,
+  "navn": "Løping 21 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-08",
+  "type": "Løp",
+  "km": 11.3,
+  "minutter": 63,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-13",
+  "type": "Løp",
+  "km": 5.8,
+  "minutter": 38,
+  "navn": "Evening Run",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-14",
+  "type": "Løp",
+  "km": 5,
+  "minutter": 26,
+  "navn": "Morning Run",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-16",
+  "type": "Løp",
+  "km": 5.6,
+  "minutter": 40,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-17",
+  "type": "Løp",
+  "km": 5.6,
+  "minutter": 43,
+  "navn": "Rolig terreng",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-17",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 47,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-18",
+  "type": "Løp",
+  "km": 10,
+  "minutter": 53,
+  "navn": "Løping 10 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-18",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 41,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-19",
+  "type": "Løp",
+  "km": 5,
+  "minutter": 30,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-19",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 54,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-24",
+  "type": "Løp",
+  "km": 7.2,
+  "minutter": 48,
+  "navn": "Rolig kveldsrunde",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-25",
+  "type": "Løp",
+  "km": 5.1,
+  "minutter": 26,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-26",
+  "type": "Løp",
+  "km": 10.1,
+  "minutter": 59,
+  "navn": "Øving til Grimstad Maraton",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-29",
+  "type": "Løp",
+  "km": 5.3,
+  "minutter": 28,
+  "navn": "Løping Porsgrunn",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-08-31",
+  "type": "Løp",
+  "km": 5.2,
+  "minutter": 27,
+  "navn": "Løping",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-01",
+  "type": "Løp",
+  "km": 5,
+  "minutter": 30,
+  "navn": "Terrengløp",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-01",
+  "type": "Løp",
+  "km": 5.2,
+  "minutter": 33,
+  "navn": "Rolig med Emil og Øiv",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-02",
+  "type": "Løp",
+  "km": 5,
+  "minutter": 23,
+  "navn": "Evening Run – nye sko",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-04",
+  "type": "Løp",
+  "km": 10,
+  "minutter": 46,
+  "navn": "Løping 10 km",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-05",
+  "type": "Sykkel",
+  "km": 30.7,
+  "minutter": 75,
+  "navn": "Sykkeltur",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-09",
+  "type": "Sykkel",
+  "km": 35.4,
+  "minutter": 83,
+  "navn": "Sykkeltur",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-11",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 32,
+  "navn": "Styrketrening",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-12",
+  "type": "Løp",
+  "km": 21.3,
+  "minutter": 110,
+  "navn": "Halvmaraton Grimstad Maraton – 1:48:57",
+  "kilde": "Strava"
+ },
+ {
+  "dato": "2026-09-15",
+  "type": "Styrke",
+  "km": 0,
+  "minutter": 43,
+  "navn": "Ettermiddag med styrketrening (Pull)",
+  "kilde": "Strava"
+ }
+]

@@ -1,0 +1,233 @@
+[
+ {
+  "okt": "Push",
+  "ovelse": "DB Bench Press / Bench Press",
+  "sett_rep": "3x6-8",
+  "vekt": "28/60",
+  "reps": null
+ },
+ {
+  "okt": "Push",
+  "ovelse": "Smith Incline Bench Press",
+  "sett_rep": "2x6-8",
+  "vekt": "30",
+  "reps": null
+ },
+ {
+  "okt": "Push",
+  "ovelse": "Pec Dec",
+  "sett_rep": "2x8-10",
+  "vekt": "40",
+  "reps": null
+ },
+ {
+  "okt": "Push",
+  "ovelse": "Skull-Crushers / Overhead Ext.",
+  "sett_rep": "2x8-10",
+  "vekt": "30/22.5",
+  "reps": null
+ },
+ {
+  "okt": "Push",
+  "ovelse": "Tricep Push Down",
+  "sett_rep": "2x8-10",
+  "vekt": "12.5/30",
+  "reps": null
+ },
+ {
+  "okt": "Push",
+  "ovelse": "Cable Lat Raise",
+  "sett_rep": "3x10-12",
+  "vekt": "7.5",
+  "reps": null
+ },
+ {
+  "okt": "Pull",
+  "ovelse": "Pullups",
+  "sett_rep": "3x6-8",
+  "vekt": "Strikk",
+  "reps": "3x10"
+ },
+ {
+  "okt": "Pull",
+  "ovelse": "T-bar Row",
+  "sett_rep": "2x6-8",
+  "vekt": "40",
+  "reps": "2x8"
+ },
+ {
+  "okt": "Pull",
+  "ovelse": "Close-Grip Cable Row",
+  "sett_rep": "2x8-10",
+  "vekt": "50",
+  "reps": "2x10"
+ },
+ {
+  "okt": "Pull",
+  "ovelse": "Reverse Fly",
+  "sett_rep": "2x10-12",
+  "vekt": "18",
+  "reps": "2x10"
+ },
+ {
+  "okt": "Pull",
+  "ovelse": "Preacher Curl",
+  "sett_rep": "2x8-10",
+  "vekt": "12/25",
+  "reps": "2x10"
+ },
+ {
+  "okt": "Pull",
+  "ovelse": "Hammer Curl",
+  "sett_rep": "2x8-10",
+  "vekt": "16",
+  "reps": "2x8"
+ },
+ {
+  "okt": "Pull",
+  "ovelse": "Shrugs",
+  "sett_rep": "2x10-12",
+  "vekt": "123",
+  "reps": null
+ },
+ {
+  "okt": "Upper body",
+  "ovelse": "DB Incline Bench Press",
+  "sett_rep": "3x6-8",
+  "vekt": "24",
+  "reps": null
+ },
+ {
+  "okt": "Upper body",
+  "ovelse": "Pull Downs",
+  "sett_rep": "3x8-10",
+  "vekt": "60",
+  "reps": null
+ },
+ {
+  "okt": "Upper body",
+  "ovelse": "Dips",
+  "sett_rep": "2x8-10",
+  "vekt": "15",
+  "reps": null
+ },
+ {
+  "okt": "Upper body",
+  "ovelse": "Chest Supported Row",
+  "sett_rep": "2x8-10",
+  "vekt": null,
+  "reps": null
+ },
+ {
+  "okt": "Upper body",
+  "ovelse": "Reverse Flys",
+  "sett_rep": "2x10-12",
+  "vekt": "16",
+  "reps": null
+ },
+ {
+  "okt": "Upper body",
+  "ovelse": "Lateral Raise",
+  "sett_rep": "3x10-12",
+  "vekt": "5",
+  "reps": null
+ },
+ {
+  "okt": "Bein A – tung",
+  "ovelse": "Pendulum Squat",
+  "sett_rep": "3x6-8",
+  "vekt": "20",
+  "reps": null
+ },
+ {
+  "okt": "Bein A – tung",
+  "ovelse": "Romanian Deadlift",
+  "sett_rep": "3x6-8",
+  "vekt": "70",
+  "reps": null
+ },
+ {
+  "okt": "Bein A – tung",
+  "ovelse": "Bulgarian Split Squat",
+  "sett_rep": "2x8/bein",
+  "vekt": "56",
+  "reps": null
+ },
+ {
+  "okt": "Bein A – tung",
+  "ovelse": "Lying Leg Curl",
+  "sett_rep": "2x8-10",
+  "vekt": "42.5",
+  "reps": null
+ },
+ {
+  "okt": "Bein A – tung",
+  "ovelse": "Calf Raise, rett kne",
+  "sett_rep": "3x10-12",
+  "vekt": "240",
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Sidegange med strikk",
+  "sett_rep": "2x10 hver vei",
+  "vekt": "strikk",
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Hip Thrust",
+  "sett_rep": "3x8-10",
+  "vekt": null,
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Abductor",
+  "sett_rep": "3x10-12",
+  "vekt": null,
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Adductor",
+  "sett_rep": "2x10-12",
+  "vekt": "40",
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Step-up (høy kasse)",
+  "sett_rep": "2x10/bein",
+  "vekt": null,
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Clamshell",
+  "sett_rep": "2x15/side",
+  "vekt": "strikk",
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Copenhagen Plank",
+  "sett_rep": "2x20-30 s/side",
+  "vekt": "-",
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Calf Raise, bøyd kne",
+  "sett_rep": "3x12-15",
+  "vekt": null,
+  "reps": null
+ },
+ {
+  "okt": "Bein B – forebygg.",
+  "ovelse": "Tåhopp / hoppetau",
+  "sett_rep": "3x20 kontakter",
+  "vekt": "-",
+  "reps": null
+ }
+]

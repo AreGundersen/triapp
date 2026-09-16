@@ -1,0 +1,15 @@
+dag,ukedag,slot,tid,base,bygg1,bygg2
+Man,1,morgen,07:00,Push,Push,Push
+Man,1,kveld,18:00,Svøm teknikk 30–40 min,Svøm teknikk 40 min,Svøm lang 45–60 min
+Tir,2,morgen,07:00,Løp intervall (6x3 min Z4),Løp tempo 3x10 min,Løp intervall
+Tir,2,kveld,16:00,Pull,Pull,Bein B – forebyggende
+Ons,3,morgen,07:30,Rolig sykkel 45 min (valgfri),Fri / mobilitet,Rolig løp 40 min
+Ons,3,kveld,17:30,Bein A – tung,Bein A – tung (redusert),Sykkel klatreterskel 4x8 min
+Tor,4,morgen,07:00,Sykkel Z2 60–75 min (rulle) – ingen løping,Sykkel Z2 60 min – ingen løping,Sykkel Z2 60 min
+Tor,4,kveld,17:45,Svøm utholdenhet 30–45 min,Svøm CSS,Svøm CSS
+Fre,5,morgen,07:00,Rolig løp 40 min Z2,Rolig løp 40–50 min,Rolig løp 50 min
+Fre,5,kveld,17:30,Sykkel sweet spot 3x10 min (annenhver uke),Sykkel terskel 2x20 min + Upper body,Pull / Upper
+Lør,6,morgen,10:00,Langtur sykkel 90–150 min Z2,Langtur sykkel 2.5–3.5 t + brick 15 min,Langtur sykkel 3.5–4.5 t KUPERT i 70.3-tempo + brick 30–45 min
+Lør,6,kveld,16:00,Bein B – forebyggende,Bein B – forebyggende,Fri
+Søn,7,morgen,10:00,Langtur løp 12–16 km Z2,Langtur løp 16–18 km,"Langtur løp 18–21 km terreng/bakker, 6–8 km i 70.3-tempo"
+Søn,7,kveld,17:45,Svøm (valgfri) 30 min,Svøm lang / åpent vann,Svøm åpent vann m/ våtdrakt
