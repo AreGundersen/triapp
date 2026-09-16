@@ -1,8 +1,8 @@
 # Python (legacy Streamlit)
-.streamlit/secrets.toml
+legacy/streamlit/.streamlit/secrets.toml
 .venv/
 __pycache__/
-local.db
+legacy/streamlit/local.db
 
 # Node / SvelteKit
 node_modules/

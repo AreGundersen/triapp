@@ -18,6 +18,8 @@ import pandas as pd  # noqa: E402
 
 from lib import plan  # noqa: E402
 
+plan.DATA = ROT / "data"  # CSV-ene ligger i repo-roten, ikke under legacy/
+
 D = dt.date.fromisoformat
 
 
