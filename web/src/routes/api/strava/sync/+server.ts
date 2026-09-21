@@ -6,8 +6,8 @@ import type { RequestHandler } from './$types';
 export const POST: RequestHandler = async ({ url, locals }) => {
 	const dager = Math.min(3650, Math.max(1, Number(url.searchParams.get('dager') ?? 30)));
 	try {
-		const [nye, hopp] = await synk(locals.supabase, dager);
-		return json({ nye, hopp });
+		const [nye, hopp, flettet] = await synk(locals.supabase, dager);
+		return json({ nye, hopp, flettet });
 	} catch (e) {
 		return json({ feil: (e as Error).message }, { status: 502 });
 	}

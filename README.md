@@ -53,7 +53,7 @@ npm run dev
 
 ### 6. Første gang i appen
 - Logg → «Importer historikk» legger inn øktene fra juni–sep 2026.
-- Logg → «Koble til Strava» → «Synk siste 30 dager». Dubletter hoppes over på Strava-ID, men historikkimporten har ikke ID, så kjør bare én av dem for perioden før 15.09.2026.
+- Logg → «Koble til Strava» → «Synk». Økter som finnes fra før hoppes over på Strava-ID, og dubletter mot historikkimporten flettes automatisk (lik dato, type, varighet og distanse).
 
 ## Endre planen
 Rediger CSV-ene i `data/`, kjør `python scripts/csv_to_json.py`, commit og push. Vercel bygger på nytt.

@@ -31,6 +31,24 @@ npm run dev       # åpne http://localhost:5173 og logg inn
 
 Husk `git pull` før du starter og `git push` når du er ferdig, så hjemme-PC og skole-PC ikke spriker. Data (logg, avhuking, tester) ligger i Supabase og er like uansett maskin.
 
+## 2026-09-21 (sent) — Strava koblet til og synk verifisert lokalt
+
+**Status:** Strava OAuth og synk virker på `http://localhost:5173`. 69 økter i `logg`, ingen dubletter.
+
+### Verifisert
+- «Koble til Strava» → godkjenning → tilbake på `/logg?strava=ok` (Are gjorde dette selv).
+- Synk 30 dager hentet 19 aktiviteter med riktig typemapping (Løp, Sykkel, Styrke, Annet for gåturer).
+- Ny `flettDubletter()` i `web/src/lib/server/strava.ts` kjøres etter hver synk. Den fant og flettet 14 dubletter mellom Strava-rader og historikkimporten (lik dato, type, hele minutter, km ±0,2). Strava-raden beholdes og arver navnet fra historikkraden. Med dette er også «Synk hele året» trygg.
+
+### Gotchas
+- **Strava krever `localhost`, ikke `127.0.0.1`.** Callback-domenet i Strava-appen er `localhost`, og `redirect_uri` bygges fra adressen i nettleseren. Innloggings-cookies er per vertsnavn, så Are måtte logge inn på nytt på `localhost`.
+- Rådet «bruk 30 dager, ikke hele året, for å unngå dubletter» i README var feil: 30 dager overlappet også med historikken. Flettingen løser det uansett vindu.
+
+### Neste steg
+1. Vercel: nytt prosjekt fra GitHub-repoet, Root Directory `web`, fire env-variabler (`PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`).
+2. Etter første deploy: Strava → Authorization Callback Domain endres til `<prosjekt>.vercel.app` (da slutter lokal Strava-tilkobling å virke, men tokens i databasen gjelder fortsatt). Supabase → Authentication → URL Configuration → Site URL settes til Vercel-adressen.
+3. Installer på iPhone og PC, test flymodus.
+
 ## 2026-09-21 (kveld) — Innlogging virker, alle fem sider verifisert i nettleser
 
 **Status:** Are er logget inn lokalt. `/`, `/logg`, `/fremdrift`, `/prognose`, `/plan` rendrer mot ekte Supabase-data uten konsollfeil. Avhuking lagres og leses tilbake (morgenøkt 21.09 står avhuket etter reload).

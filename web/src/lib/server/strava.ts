@@ -99,8 +99,41 @@ type Aktivitet = {
 	start_date_local: string;
 };
 
-/** Henter aktiviteter for de siste `dager` og legger nye i logg. Returnerer [nye, hoppet over]. */
-export async function synk(sb: Klient, dager: number): Promise<[number, number]> {
+/**
+ * Fletter dubletter mellom Strava-rader og rader uten Strava-ID (historikkimport/manuelt) som
+ * beskriver samme økt: lik dato, type, varighet (hele minutter) og distanse (±0,2 km).
+ * Strava-raden beholdes (den har ID-en som hindrer nye dubletter) og arver navnet fra den
+ * andre raden, som gjerne er mer beskrivende. Én-til-én: hver rad flettes høyst én gang.
+ */
+export async function flettDubletter(sb: Klient): Promise<number> {
+	const { data: rader, error } = await sb.from('logg').select('id, dato, type, km, minutter, navn, strava_id');
+	if (error) throw new Error(error.message);
+	const nokkel = (r: { dato: string; type: string; minutter: number }) =>
+		`${r.dato}|${r.type}|${Math.round(Number(r.minutter))}`;
+	const utenId = new Map<string, typeof rader>();
+	for (const r of rader.filter((x) => !x.strava_id)) {
+		const k = nokkel(r);
+		utenId.set(k, [...(utenId.get(k) ?? []), r]);
+	}
+	let flettet = 0;
+	for (const s of rader.filter((x) => x.strava_id)) {
+		const kandidater = utenId.get(nokkel(s)) ?? [];
+		const i = kandidater.findIndex((k) => Math.abs(Number(k.km) - Number(s.km)) <= 0.2);
+		if (i < 0) continue;
+		const [tvilling] = kandidater.splice(i, 1);
+		if (tvilling.navn && tvilling.navn !== s.navn) {
+			const { error: e1 } = await sb.from('logg').update({ navn: tvilling.navn }).eq('id', s.id);
+			if (e1) throw new Error(e1.message);
+		}
+		const { error: e2 } = await sb.from('logg').delete().eq('id', tvilling.id);
+		if (e2) throw new Error(e2.message);
+		flettet++;
+	}
+	return flettet;
+}
+
+/** Henter aktiviteter for de siste `dager`, legger nye i logg og fletter dubletter. Returnerer [nye, hoppet over, flettet]. */
+export async function synk(sb: Klient, dager: number): Promise<[number, number, number]> {
 	const tok = await accessToken(sb);
 	if (!tok) throw new Error('Strava er ikke koblet til.');
 	const after = Math.floor((Date.now() - dager * 86_400_000) / 1000);
@@ -133,5 +166,6 @@ export async function synk(sb: Klient, dager: number): Promise<[number, number]>
 			nye++;
 		}
 	}
-	return [nye, hopp];
+	const flettet = await flettDubletter(sb);
+	return [Math.max(0, nye - flettet), hopp, flettet];
 }
