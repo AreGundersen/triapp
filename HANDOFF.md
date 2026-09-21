@@ -31,6 +31,27 @@ npm run dev       # åpne http://localhost:5173 og logg inn
 
 Husk `git pull` før du starter og `git push` når du er ferdig, så hjemme-PC og skole-PC ikke spriker. Data (logg, avhuking, tester) ligger i Supabase og er like uansett maskin.
 
+## 2026-09-21 (kveld) — Innlogging virker, alle fem sider verifisert i nettleser
+
+**Status:** Are er logget inn lokalt. `/`, `/logg`, `/fremdrift`, `/prognose`, `/plan` rendrer mot ekte Supabase-data uten konsollfeil. Avhuking lagres og leses tilbake (morgenøkt 21.09 står avhuket etter reload).
+
+### Rettet i dag
+- `layout.css`: egne klasser (`.knapp`, `.felt`, `.kort`, `.tittel`) lå utenfor CSS-lag og overstyrte Tailwind-utilities, så `w-auto` på dato-knappene virket ikke. Flyttet inn i `@layer components`.
+- `+page.svelte`: avhuking startet tom og ble fylt av en `$effect`, som ga et blink med tomme avkrysninger. Nå `$derived` av databasedata pluss optimistiske overstyringer.
+
+### Ikke verifisert ennå
+- Skriving fra Logg (legg til, slett, «Importer historikk») og «Registrer test» på Prognose. Koden er kjørt gjennom typesjekk, men ingen har trykket på knappene. Assistenten lot være for ikke å legge testdata i Ares database uten å spørre.
+- Strava, service worker/offline, installasjon på iPhone, Vercel.
+
+### Gotcha
+- Claudes innebygde nettleserpanel deler ikke innlogging med Ares Chrome. For å se sider bak innlogging må Claude in Chrome-utvidelsen brukes, eller Are må logge inn i panelet.
+- Advarselen «Using the user object as returned from supabase.auth.getSession() … could be insecure» i serverloggen er støy: `hooks.server.ts` validerer med `getUser()`.
+
+### Neste steg
+1. Are tester skriving selv: «Importer historikk» på Logg, legg til og slett en økt, registrer en test.
+2. Strava-app → `web/.env` → test tilkobling og synk lokalt.
+3. Vercel-deploy, så iPhone-installasjon.
+
 ## 2026-09-21 — Pushet til GitHub, Supabase satt opp, venter på første innlogging
 
 **Status:** Kode på GitHub (lokalt = origin/main, rent arbeidstre). Supabase-prosjekt finnes med skjema og bruker. Appen starter lokalt mot Supabase. Ingen har logget inn ennå, så sidene bak innlogging er fortsatt ukjørt.

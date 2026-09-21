@@ -29,11 +29,10 @@
 
 	let dato = $state(idag());
 	let feil = $state('');
-	// Lokal kopi av avhuking så avkryssing føles umiddelbar.
-	let avh = $state<Record<string, Avhuking>>({});
-	$effect(() => {
-		avh = { ...data.avhuking };
-	});
+	// Optimistiske overstyringer legges oppå data fra databasen, så avkryssing føles umiddelbar
+	// og siden er riktig allerede ved første tegning (ingen blink).
+	let lokalt = $state<Record<string, Avhuking>>({});
+	const avh = $derived<Record<string, Avhuking>>({ ...data.avhuking, ...lokalt });
 
 	const uke = $derived(ukeFor(dato));
 	const fase = $derived(faseFor(uke));
@@ -52,16 +51,19 @@
 	const ern = $derived(ernaering(okter, pr.kg));
 
 	async function huk(slot: 'morgen' | 'kveld', verdi: boolean) {
-		const forrige = dagensAvh;
-		const ny = { ...forrige, [slot]: verdi };
-		avh = { ...avh, [dato]: ny };
+		const d = dato;
+		const ny = { ...dagensAvh, [slot]: verdi };
+		lokalt = { ...lokalt, [d]: ny };
 		feil = '';
 		try {
-			await settAvhuking(data.supabase, dato, ny);
+			await settAvhuking(data.supabase, d, ny);
 			await invalidateAll();
 		} catch (e) {
 			feil = `Kunne ikke lagre: ${(e as Error).message}`;
-			avh = { ...avh, [dato]: forrige };
+		} finally {
+			// Databasen er fasit igjen (ved feil faller avkryssingen tilbake).
+			const { [d]: _, ...rest } = lokalt;
+			lokalt = rest;
 		}
 	}
 
