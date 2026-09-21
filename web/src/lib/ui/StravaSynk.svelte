@@ -23,8 +23,10 @@
 		}
 	}
 
+	let bekreftFra = $state(false);
+
 	async function kobleFra() {
-		if (!confirm('Koble fra Strava?')) return;
+		bekreftFra = false;
 		await fetch('/api/strava/sync', { method: 'DELETE' });
 		await invalidateAll();
 	}
@@ -41,5 +43,12 @@
 	</div>
 	{#if melding}<p class="mt-2 text-sm text-gronn">{melding}</p>{/if}
 	{#if feil}<p class="mt-2 text-sm text-rod" role="alert">{feil}</p>{/if}
-	<button class="mt-2 text-xs text-dim underline" onclick={kobleFra}>Koble fra Strava</button>
+	{#if bekreftFra}
+		<div class="mt-2 flex items-center gap-3 text-xs">
+			<button class="rounded-md bg-rod px-2 py-1 font-semibold text-white" onclick={kobleFra}>Ja, koble fra</button>
+			<button class="text-dim underline" onclick={() => (bekreftFra = false)}>Avbryt</button>
+		</div>
+	{:else}
+		<button class="mt-2 text-xs text-dim underline" onclick={() => (bekreftFra = true)}>Koble fra Strava</button>
+	{/if}
 {/if}

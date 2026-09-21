@@ -39,18 +39,24 @@ Husk `git pull` før du starter og `git push` når du er ferdig, så hjemme-PC o
 - `layout.css`: egne klasser (`.knapp`, `.felt`, `.kort`, `.tittel`) lå utenfor CSS-lag og overstyrte Tailwind-utilities, så `w-auto` på dato-knappene virket ikke. Flyttet inn i `@layer components`.
 - `+page.svelte`: avhuking startet tom og ble fylt av en `$effect`, som ga et blink med tomme avkrysninger. Nå `$derived` av databasedata pluss optimistiske overstyringer.
 
+### Skriving verifisert (samme kveld, på Ares oppdrag)
+- «Importer historikk»: 64 av 64 økter ligger i `logg` (Are kjørte den selv).
+- Legg til økt: testrad dukket opp øverst, skjema tømt, melding «Økt lagt til.».
+- Slett økt: 65 → 64 rader, melding «Økt slettet.». Testraden er fjernet.
+- Registrer test: uke 1 «Utgangspunkt» lagret med FTP 178, 80 kg, 5 km 22:37, HM 1:48:57 (samme som modellens standardverdier, så prognosen står på 6:50). Dette er ekte data og skal bli liggende.
+- Byttet `confirm()` mot to-trinns bekreftelse i siden (Logg-sletting og «Koble fra Strava»). `confirm()` fryser siden for nettleserautomatisering og er dårlig i installert PWA.
+
 ### Ikke verifisert ennå
-- Skriving fra Logg (legg til, slett, «Importer historikk») og «Registrer test» på Prognose. Koden er kjørt gjennom typesjekk, men ingen har trykket på knappene. Assistenten lot være for ikke å legge testdata i Ares database uten å spørre.
 - Strava, service worker/offline, installasjon på iPhone, Vercel.
+- Tester har ingen slett-funksjon i appen (kun overskriving per uke). Feilregistreringer må rettes i Supabase Table Editor.
 
 ### Gotcha
 - Claudes innebygde nettleserpanel deler ikke innlogging med Ares Chrome. For å se sider bak innlogging må Claude in Chrome-utvidelsen brukes, eller Are må logge inn i panelet.
 - Advarselen «Using the user object as returned from supabase.auth.getSession() … could be insecure» i serverloggen er støy: `hooks.server.ts` validerer med `getUser()`.
 
 ### Neste steg
-1. Are tester skriving selv: «Importer historikk» på Logg, legg til og slett en økt, registrer en test.
-2. Strava-app → `web/.env` → test tilkobling og synk lokalt.
-3. Vercel-deploy, så iPhone-installasjon.
+1. Strava-app → `web/.env` → test tilkobling og synk lokalt.
+2. Vercel-deploy, så iPhone-installasjon.
 
 ## 2026-09-21 — Pushet til GitHub, Supabase satt opp, venter på første innlogging
 

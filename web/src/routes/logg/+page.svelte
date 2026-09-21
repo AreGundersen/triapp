@@ -52,8 +52,12 @@
 		});
 	}
 
-	function slett(id: number, tekst: string) {
-		if (!confirm(`Slette «${tekst}»?`)) return;
+	// To-trinns sletting i siden i stedet for nettleserens confirm(), som fryser siden
+	// og oppfører seg dårlig i en installert PWA.
+	let slettId = $state<number | null>(null);
+
+	function slett(id: number) {
+		slettId = null;
 		kjor(async () => {
 			await slettLogg(data.supabase, id);
 			return 'Økt slettet.';
@@ -124,7 +128,12 @@
 					{#if r.navn}<div class="truncate text-dim">{r.navn}</div>{/if}
 				</div>
 				<div class="text-xs text-dim">{r.kilde}</div>
-				<button class="px-1 text-dim" onclick={() => slett(r.id, `${formatDatoKort(r.dato)} ${r.type}`)} aria-label="Slett økt" disabled={jobber}>✕</button>
+				{#if slettId === r.id}
+					<button class="rounded-md bg-rod px-2 py-1 text-xs font-semibold text-white" onclick={() => slett(r.id)} disabled={jobber}>Slett</button>
+					<button class="px-1 text-xs text-dim underline" onclick={() => (slettId = null)}>Avbryt</button>
+				{:else}
+					<button class="px-1 text-dim" onclick={() => (slettId = r.id)} aria-label="Slett økt" disabled={jobber}>✕</button>
+				{/if}
 			</li>
 		{/each}
 	</ul>
