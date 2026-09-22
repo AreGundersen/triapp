@@ -4,7 +4,8 @@
  */
 import { env } from '$env/dynamic/private';
 import type { Klient } from '$lib/supabase/queries';
-import { kjenteStravaIder, leggTilLogg } from '$lib/supabase/queries';
+import { hukAv, kjenteStravaIder, leggTilLogg } from '$lib/supabase/queries';
+import { dagensOkter, slotForOkt } from '$lib/plan/model';
 
 const AUTH_URL = 'https://www.strava.com/oauth/authorize';
 const TOKEN_URL = 'https://www.strava.com/oauth/token';
@@ -75,8 +76,10 @@ export async function kobleFra(sb: Klient): Promise<void> {
 	if (error) throw new Error(error.message);
 }
 
-async function accessToken(sb: Klient): Promise<string | null> {
-	const { data: tok } = await sb.from('strava_tokens').select('*').maybeSingle();
+async function accessToken(sb: Klient, userId?: string): Promise<string | null> {
+	let q = sb.from('strava_tokens').select('*');
+	if (userId) q = q.eq('user_id', userId);
+	const { data: tok } = await q.maybeSingle();
 	if (!tok) return null;
 	if (tok.expires - 60 < Date.now() / 1000) {
 		const j = await tokenKall({ refresh_token: tok.refresh, grant_type: 'refresh_token' });
@@ -105,8 +108,10 @@ type Aktivitet = {
  * Strava-raden beholdes (den har ID-en som hindrer nye dubletter) og arver navnet fra den
  * andre raden, som gjerne er mer beskrivende. Én-til-én: hver rad flettes høyst én gang.
  */
-export async function flettDubletter(sb: Klient): Promise<number> {
-	const { data: rader, error } = await sb.from('logg').select('id, dato, type, km, minutter, navn, strava_id');
+export async function flettDubletter(sb: Klient, userId?: string): Promise<number> {
+	let q = sb.from('logg').select('id, dato, type, km, minutter, navn, strava_id');
+	if (userId) q = q.eq('user_id', userId);
+	const { data: rader, error } = await q;
 	if (error) throw new Error(error.message);
 	const nokkel = (r: { dato: string; type: string; minutter: number }) =>
 		`${r.dato}|${r.type}|${Math.round(Number(r.minutter))}`;
@@ -132,14 +137,19 @@ export async function flettDubletter(sb: Klient): Promise<number> {
 	return flettet;
 }
 
-/** Henter aktiviteter for de siste `dager`, legger nye i logg og fletter dubletter. Returnerer [nye, hoppet over, flettet]. */
-export async function synk(sb: Klient, dager: number): Promise<[number, number, number]> {
-	const tok = await accessToken(sb);
+/**
+ * Henter aktiviteter for de siste `dager`, legger nye i logg, huker av planlagt økt som passer,
+ * og fletter dubletter. Returnerer [nye, hoppet over, flettet, avhuket].
+ * `userId` trengs bare når `sb` er en service-role-klient (cron); ellers gir RLS riktig bruker.
+ */
+export async function synk(sb: Klient, dager: number, userId?: string): Promise<[number, number, number, number]> {
+	const tok = await accessToken(sb, userId);
 	if (!tok) throw new Error('Strava er ikke koblet til.');
 	const after = Math.floor((Date.now() - dager * 86_400_000) / 1000);
-	const kjente = await kjenteStravaIder(sb);
+	const kjente = await kjenteStravaIder(sb, userId);
 	let nye = 0;
 	let hopp = 0;
+	let avhuket = 0;
 	for (let page = 1; ; page++) {
 		const q = new URLSearchParams({ after: String(after), per_page: '100', page: String(page) });
 		const r = await fetch(`${API}/athlete/activities?${q}`, { headers: { Authorization: `Bearer ${tok}` } });
@@ -153,19 +163,24 @@ export async function synk(sb: Klient, dager: number): Promise<[number, number, 
 				continue;
 			}
 			const typ = TYPEMAP[a.sport_type ?? a.type ?? ''] ?? 'Annet';
+			const dato = a.start_date_local.slice(0, 10);
 			await leggTilLogg(sb, {
-				dato: a.start_date_local.slice(0, 10),
+				dato,
 				type: typ,
 				km: Math.round(((a.distance ?? 0) / 1000) * 10) / 10,
 				minutter: Math.round((a.moving_time ?? 0) / 60),
 				navn: a.name ?? '',
 				kilde: 'Strava',
-				strava_id: sid
+				strava_id: sid,
+				...(userId ? { user_id: userId } : {})
 			});
 			kjente.add(sid);
 			nye++;
+			// Automatisk avhuking: passer økta til morgen- eller kveldsøkta i planen den dagen?
+			const slot = slotForOkt(dagensOkter(dato), typ, Number(a.start_date_local.slice(11, 13)));
+			if (slot && (await hukAv(sb, dato, slot, userId))) avhuket++;
 		}
 	}
-	const flettet = await flettDubletter(sb);
-	return [Math.max(0, nye - flettet), hopp, flettet];
+	const flettet = await flettDubletter(sb, userId);
+	return [Math.max(0, nye - flettet), hopp, flettet, avhuket];
 }

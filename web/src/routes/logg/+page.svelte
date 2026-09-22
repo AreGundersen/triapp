@@ -4,7 +4,7 @@
 	import StravaSynk from '$lib/ui/StravaSynk.svelte';
 	import seed from '$lib/plan/data/logg_seed.json';
 	import { TYPER, formatDatoKort, idag } from '$lib/plan/model';
-	import { importerSeed, leggTilLogg, slettLogg } from '$lib/supabase/queries';
+	import { importerSeed, leggTilLogg, oppdaterLogg, slettLogg } from '$lib/supabase/queries';
 
 	let { data } = $props();
 
@@ -61,6 +61,33 @@
 		kjor(async () => {
 			await slettLogg(data.supabase, id);
 			return 'Økt slettet.';
+		});
+	}
+
+	// Redigering av én rad om gangen.
+	let redigerId = $state<number | null>(null);
+	let e = $state({ dato: '', type: 'Løp', km: '', minutter: '', navn: '' });
+
+	function startRediger(r: (typeof data.logg)[number]) {
+		slettId = null;
+		redigerId = r.id;
+		e = { dato: r.dato, type: r.type, km: String(r.km).replace('.', ','), minutter: String(r.minutter), navn: r.navn };
+	}
+
+	function lagreRediger(ev: SubmitEvent) {
+		ev.preventDefault();
+		const id = redigerId;
+		if (id == null) return;
+		kjor(async () => {
+			await oppdaterLogg(data.supabase, id, {
+				dato: e.dato,
+				type: e.type,
+				km: parseFloat(e.km.replace(',', '.')) || 0,
+				minutter: parseFloat(e.minutter.replace(',', '.')) || 0,
+				navn: e.navn
+			});
+			redigerId = null;
+			return 'Økt oppdatert.';
 		});
 	}
 
@@ -121,6 +148,25 @@
 	</div>
 	<ul class="mt-3 divide-y divide-line">
 		{#each vis as r (r.id)}
+			{#if redigerId === r.id}
+				<li class="py-2">
+					<form class="flex flex-col gap-2 text-sm" onsubmit={lagreRediger}>
+						<div class="grid grid-cols-2 gap-2">
+							<input type="date" class="felt py-1" bind:value={e.dato} required aria-label="Dato" />
+							<select class="felt py-1" bind:value={e.type} aria-label="Type">
+								{#each TYPER as t (t)}<option value={t}>{t}</option>{/each}
+							</select>
+							<input class="felt py-1" inputmode="decimal" placeholder="Km" bind:value={e.km} aria-label="Km" />
+							<input class="felt py-1" inputmode="numeric" placeholder="Minutter" bind:value={e.minutter} aria-label="Minutter" />
+						</div>
+						<input class="felt py-1" placeholder="Notat" bind:value={e.navn} aria-label="Notat" />
+						<div class="flex gap-2">
+							<button class="knapp w-auto px-4 py-1.5 text-sm" type="submit" disabled={jobber}>Lagre</button>
+							<button class="knapp knapp-lys w-auto px-4 py-1.5 text-sm" type="button" onclick={() => (redigerId = null)}>Avbryt</button>
+						</div>
+					</form>
+				</li>
+			{:else}
 			<li class="flex items-center gap-3 py-2 text-sm">
 				<div class="w-14 shrink-0 text-dim">{formatDatoKort(r.dato)}</div>
 				<div class="min-w-0 flex-1">
@@ -132,9 +178,11 @@
 					<button class="rounded-md bg-rod px-2 py-1 text-xs font-semibold text-white" onclick={() => slett(r.id)} disabled={jobber}>Slett</button>
 					<button class="px-1 text-xs text-dim underline" onclick={() => (slettId = null)}>Avbryt</button>
 				{:else}
+					<button class="px-1 text-dim" onclick={() => startRediger(r)} aria-label="Rediger økt" disabled={jobber}>✎</button>
 					<button class="px-1 text-dim" onclick={() => (slettId = r.id)} aria-label="Slett økt" disabled={jobber}>✕</button>
 				{/if}
 			</li>
+			{/if}
 		{/each}
 	</ul>
 	<p class="mt-3 text-xs text-dim">{vis.length} av {data.logg.length} økter</p>

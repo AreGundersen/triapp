@@ -5,6 +5,9 @@
 import { describe, expect, it } from 'vitest';
 import fasit from './fasit.json';
 import {
+	kommendeLop,
+	medVekter,
+	slotForOkt,
 	dagensOkter,
 	ernaering,
 	faseFor,
@@ -104,5 +107,39 @@ describe('ernæring', () => {
 	it('matcher Python for ulike dagstyper', () => {
 		for (const [d, forventet] of Object.entries(fasit.ernaering))
 			expect(ernaering(dagensOkter(d), 80)).toEqual(forventet);
+	});
+});
+
+describe('automatisk avhuking', () => {
+	it('velger riktig slot ut fra type og klokkeslett', () => {
+		const tir = dagensOkter('2026-09-22'); // base: morgen løp intervall, kveld Pull
+		expect(slotForOkt(tir, 'Løp', 7)).toBe('morgen');
+		expect(slotForOkt(tir, 'Styrke', 17)).toBe('kveld');
+		expect(slotForOkt(tir, 'Svøm', 17)).toBeNull();
+		const fre = dagensOkter('2027-02-05'); // bygg1: morgen rolig løp, kveld sykkel terskel + Upper body
+		expect(slotForOkt(fre, 'Sykkel', 18)).toBe('kveld');
+		expect(slotForOkt(fre, 'Styrke', 18)).toBe('kveld');
+		expect(slotForOkt(fre, 'Løp', 7)).toBe('morgen');
+	});
+	it('bruker klokkeslett når begge slots passer', () => {
+		const okter = { morgen: { tid: '07:00', tekst: 'Rolig løp' }, kveld: { tid: '18:00', tekst: 'Løp intervall' } };
+		expect(slotForOkt(okter, 'Løp', 8)).toBe('morgen');
+		expect(slotForOkt(okter, 'Løp', 18)).toBe('kveld');
+	});
+});
+
+describe('vekter og delmål', () => {
+	it('overstyrer vekt fra databasen', () => {
+		const rader = medVekter(
+			[{ okt: 'Push', ovelse: 'Pec Dec', sett_rep: '2x8-10', vekt: '40', reps: null }],
+			{ 'Pec Dec': '45' }
+		);
+		expect(rader[0].vekt).toBe('45');
+	});
+	it('lister kommende løp med dager igjen', () => {
+		const k = kommendeLop('2026-09-22');
+		expect(k.map((x) => x.navn)).toEqual(['E18-løpet 15 km', 'Dyreparken 10 km', 'Efjord Extreme 70.3']);
+		expect(k[0].dager).toBe(40);
+		expect(kommendeLop('2027-08-08')).toEqual([]);
 	});
 });

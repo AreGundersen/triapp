@@ -31,6 +31,32 @@ npm run dev       # åpne http://localhost:5173 og logg inn
 
 Husk `git pull` før du starter og `git push` når du er ferdig, så hjemme-PC og skole-PC ikke spriker. Data (logg, avhuking, tester) ligger i Supabase og er like uansett maskin.
 
+## 2026-09-22 — Auto-synk med avhuking, redigerbare vekter, rediger/slett
+
+**Status:** Alt under er kodet, typesjekket, testet i Chrome mot ekte database og pushet. Én migrasjon gjenstår for Are.
+
+### Nytt
+- **Automatisk Strava-synk** når appen åpnes, høyst hver 6. time (`+layout.svelte`, tidsstempel i localStorage). I tillegg daglig kl. 04 via Vercel Cron (`web/vercel.json` → `/api/cron/sync`), som krever `SUPABASE_SERVICE_ROLE_KEY` og `CRON_SECRET` som env på Vercel. Uten disse svarer ruta 401/503 og ingenting skjer; åpne-synken virker uansett.
+- **Automatisk avhuking:** nye Strava-økter hukes av mot planen (`slotForOkt` i `model.ts`: type må passe teksten i morgen-/kveldsøkta; passer begge, avgjør klokkeslettet, før 13 = morgen). Kun for økter som kommer inn via synk, ikke for manuelle rader.
+- **Vekter i appen:** trykk på vekten i øvelseslista (forsiden og Plan → Styrke) → lagres i `styrke_vekt` og overstyrer `styrke.csv`. Hver lagring logges i `styrke_historikk` (ny tabell, migrasjon 0002) og vises under «Siste endringer» på Plan → Styrke.
+- **Rediger og slett:** ✎ på loggrader (inline-skjema), ✎ og ✕ på testrader i Prognose-tabellen (✎ fyller skjemaet, Lagre overskriver).
+- **Nedtelling til delmål** under fremdriftslinja på forsiden (E18-løpet, Dyreparken).
+
+### Verifisert i Chrome (innlogget som Are)
+- Vekt «Pec Dec» lagret fra Plan → Styrke uten feil (satt til samme verdi, 40).
+- Loggrad lagt til → redigert (km og notat) → slettet. 69 rader før og etter.
+- Prognose: ✎ på uke 1 fylte skjemaet med 178 W / 80 kg / 22:37 / 1:48:57. Ikke lagret på nytt.
+- Auto-synk kjørte ved sideåpning (`sisteSynk` satt).
+- 15 vitest grønne, svelte-check 0 feil.
+
+### Ikke verifisert
+- Automatisk avhuking mot en *ny* Strava-økt (ingen nye aktiviteter fantes). Logikken er enhetstestet.
+- Cron-ruta (kan bare kjøres på Vercel).
+
+### Are må gjøre
+1. Supabase → SQL Editor → kjør `supabase/migrations/0002_styrke_historikk.sql`. Inntil da lagres vekter, men uten historikk (koden svelger feilen med en console.warn).
+2. På Vercel, hvis daglig cron ønskes: legg til `SUPABASE_SERVICE_ROLE_KEY` (Supabase → API Keys → Secret key) og `CRON_SECRET` (vilkårlig lang streng).
+
 ## 2026-09-21 (sent) — Strava koblet til og synk verifisert lokalt
 
 **Status:** Strava OAuth og synk virker på `http://localhost:5173`. 69 økter i `logg`, ingen dubletter.

@@ -49,7 +49,10 @@ export type StravaTokensRow = {
 export type StravaTokensInsert = Omit<StravaTokensRow, 'user_id'> & { user_id?: string };
 
 export type StyrkeVektRow = { user_id: string; ovelse: string; vekt: string | null; oppdatert: string };
-export type StyrkeVektInsert = { ovelse: string; vekt: string | null; user_id?: string };
+export type StyrkeVektInsert = { ovelse: string; vekt: string | null; oppdatert?: string; user_id?: string };
+
+export type StyrkeHistorikkRow = { id: number; user_id: string; ovelse: string; vekt: string | null; dato: string };
+export type StyrkeHistorikkInsert = { ovelse: string; vekt: string | null; dato?: string; user_id?: string };
 
 type Tabell<Row, Insert> = {
 	Row: Row;
@@ -66,6 +69,7 @@ export type Database = {
 			tester: Tabell<TesterRow, TesterInsert>;
 			strava_tokens: Tabell<StravaTokensRow, StravaTokensInsert>;
 			styrke_vekt: Tabell<StyrkeVektRow, StyrkeVektInsert>;
+			styrke_historikk: Tabell<StyrkeHistorikkRow, StyrkeHistorikkInsert>;
 		};
 		Views: Record<string, never>;
 		Functions: Record<string, never>;

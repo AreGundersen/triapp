@@ -12,11 +12,12 @@
 		feil = '';
 		try {
 			const r = await fetch(`/api/strava/sync?dager=${dager}`, { method: 'POST' });
-			const j = (await r.json()) as { nye?: number; hopp?: number; flettet?: number; feil?: string };
+			const j = (await r.json()) as { nye?: number; hopp?: number; flettet?: number; avhuket?: number; feil?: string };
 			if (!r.ok || j.feil) throw new Error(j.feil ?? `HTTP ${r.status}`);
 			melding =
 				`${j.nye} nye økter lagt inn (${j.hopp} fantes allerede).` +
-				(j.flettet ? ` ${j.flettet} dubletter flettet med historikken.` : '');
+				(j.flettet ? ` ${j.flettet} dubletter flettet.` : '') +
+				(j.avhuket ? ` ${j.avhuket} planlagte økter huket av.` : '');
 			await invalidateAll();
 		} catch (e) {
 			feil = `Synk feilet: ${(e as Error).message}`;

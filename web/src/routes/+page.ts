@@ -1,12 +1,13 @@
-import { hentAvhuking, hentLogg, hentTester } from '$lib/supabase/queries';
+import { hentAvhuking, hentLogg, hentStyrkeVekter, hentTester } from '$lib/supabase/queries';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ parent }) => {
 	const { supabase } = await parent();
-	const [logg, avhuking, tester] = await Promise.all([
+	const [logg, avhuking, tester, vekter] = await Promise.all([
 		hentLogg(supabase),
 		hentAvhuking(supabase),
-		hentTester(supabase)
+		hentTester(supabase),
+		hentStyrkeVekter(supabase)
 	]);
-	return { logg, avhuking, tester };
+	return { logg, avhuking, tester, vekter };
 };

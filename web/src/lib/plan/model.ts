@@ -157,6 +157,41 @@ export function styrkeoktI(tekst: string): StyrkeRad[] | null {
 	}
 	return null;
 }
+/** Passer en utført økt av gitt type (Løp/Sykkel/Svøm/Styrke) til teksten i planen? */
+export function passerOkt(tekst: string, type: string): boolean {
+	const t = tekst.toLowerCase();
+	if (type === 'Løp') return t.includes('løp');
+	if (type === 'Sykkel') return t.includes('sykkel') || t.includes('brick');
+	if (type === 'Svøm') return t.includes('svøm');
+	if (type === 'Styrke') return styrkeoktI(tekst) !== null;
+	return false;
+}
+
+/**
+ * Hvilket slot (morgen/kveld) en utført økt hører til, for automatisk avhuking.
+ * `time` er starttidspunkt lokalt (0–23). Passer begge slots: før kl. 13 = morgen.
+ */
+export function slotForOkt(okter: DagensOkter, type: string, time: number): 'morgen' | 'kveld' | null {
+	const m = passerOkt(okter.morgen.tekst, type);
+	const k = passerOkt(okter.kveld.tekst, type);
+	if (m && k) return time < 13 ? 'morgen' : 'kveld';
+	if (m) return 'morgen';
+	if (k) return 'kveld';
+	return null;
+}
+
+/** Styrkeøvelser med vekt fra databasen der den finnes, ellers standard fra styrke.csv. */
+export function medVekter(rader: StyrkeRad[], vekter: Record<string, string | null>): StyrkeRad[] {
+	return rader.map((r) => (r.ovelse in vekter ? { ...r, vekt: vekter[r.ovelse] } : r));
+}
+
+/** Kommende løp (delmål og hovedløp) fra og med datoen, med dager igjen. */
+export function kommendeLop(iso: string): { navn: string; dato: string; dager: number }[] {
+	return [...ANDRE_LOP, [LOPSNAVN, LOP] as [string, string]]
+		.filter(([, d]) => d >= iso)
+		.map(([navn, d]) => ({ navn, dato: d, dager: dagerMellom(iso, d) }));
+}
+
 export function erHard(tekst: string): boolean {
 	const t = tekst.toLowerCase();
 	return ['langtur', 'intervall', 'tempo', 'terskel', 'simulering', '70.3'].some((k) =>

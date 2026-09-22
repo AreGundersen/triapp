@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './layout.css';
-	import { invalidate } from '$app/navigation';
+	import { browser } from '$app/environment';
+	import { invalidate, invalidateAll } from '$app/navigation';
 	import { page } from '$app/state';
 	import favicon from '$lib/assets/favicon.svg';
 	import Nav from '$lib/ui/Nav.svelte';
@@ -18,6 +19,29 @@
 	});
 
 	const visNav = $derived(!!data.session && !page.url.pathname.startsWith('/login'));
+
+	// Automatisk Strava-synk når appen åpnes, høyst hver 6. time (tidsstempel i localStorage).
+	$effect(() => {
+		if (!browser || !data.stravaTilkoblet) return;
+		let sist = 0;
+		try {
+			sist = Number(localStorage.getItem('sisteSynk') ?? 0);
+		} catch {
+			/* privat modus o.l. */
+		}
+		if (Date.now() - sist < 6 * 3600_000) return;
+		try {
+			localStorage.setItem('sisteSynk', String(Date.now()));
+		} catch {
+			/* ignorer */
+		}
+		fetch('/api/strava/sync?dager=14', { method: 'POST' })
+			.then((r) => r.json())
+			.then((j: { nye?: number; flettet?: number; avhuket?: number }) => {
+				if (j.nye || j.flettet || j.avhuket) invalidateAll();
+			})
+			.catch(() => {});
+	});
 </script>
 
 <svelte:head>

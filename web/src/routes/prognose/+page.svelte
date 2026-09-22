@@ -3,7 +3,7 @@
 	import Diagram from '$lib/ui/Diagram.svelte';
 	import Kort from '$lib/ui/Kort.svelte';
 	import { TEST_UKER, fmtHms, fmtMs, idag, parseTid, prognose, ukeFor } from '$lib/plan/model';
-	import { lagreTest } from '$lib/supabase/queries';
+	import { lagreTest, slettTest } from '$lib/supabase/queries';
 
 	let { data } = $props();
 
@@ -23,6 +23,43 @@
 	let jobber = $state(false);
 
 	const tall = (s: string) => (s.trim() ? parseFloat(s.replace(',', '.')) : null);
+	const harTest = $derived(new Set(data.tester.map((t) => t.uke)));
+	const hms = (s: number) => {
+		const t = Math.round(s);
+		const p = (n: number) => String(n).padStart(2, '0');
+		return `${Math.floor(t / 3600)}:${p(Math.floor((t % 3600) / 60))}:${p(t % 60)}`;
+	};
+
+	/** Fyll skjemaet med en lagret test så den kan endres. */
+	function fyll(u: number) {
+		const t = data.tester.find((x) => x.uke === u);
+		if (!t) return;
+		uke = u;
+		css = t.css_sek != null ? fmtMs(t.css_sek) : '';
+		ftp = t.ftp != null ? String(t.ftp) : '';
+		kg = t.kg != null ? String(t.kg) : '';
+		k5 = t.k5_sek != null ? fmtMs(t.k5_sek) : '';
+		hm = t.hm_sek != null ? hms(t.hm_sek) : '';
+		kommentar = t.kommentar ?? '';
+		melding = `Redigerer uke ${u}. Lagre for å overskrive.`;
+		document.getElementById('testskjema')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
+	let slettUke = $state<number | null>(null);
+	async function slett(u: number) {
+		slettUke = null;
+		jobber = true;
+		feil = '';
+		try {
+			await slettTest(data.supabase, u);
+			melding = `Test for uke ${u} slettet.`;
+			await invalidateAll();
+		} catch (err) {
+			feil = (err as Error).message;
+		} finally {
+			jobber = false;
+		}
+	}
 
 	async function lagre(e: SubmitEvent) {
 		e.preventDefault();
@@ -71,7 +108,7 @@
 	<div class="col-span-2"><Kort lab="Totalt" val={fmtHms(pr.total)} sub="mål under 7:00 · godt løp 6:30 · drøm 6:15 · ±20 min" /></div>
 </div>
 
-<h2 class="font-cond mt-6 text-xl font-bold">Registrer test</h2>
+<h2 id="testskjema" class="font-cond mt-6 scroll-mt-4 text-xl font-bold">Registrer test</h2>
 <form class="kort mt-2 flex flex-col gap-2" onsubmit={lagre}>
 	<select class="felt" bind:value={uke} aria-label="Uke / test">
 		{#each TEST_UKER as [u, navn] (u)}<option value={u}>Uke {u} – {navn}</option>{/each}
@@ -91,16 +128,28 @@
 	{#if feil}<p class="text-sm text-rod" role="alert">{feil}</p>{/if}
 </form>
 
-<div class="mt-4 overflow-x-auto">
+<p class="mt-4 text-xs text-dim">Rader med ✎ har lagret test. Uten test brukes standardverdier.</p>
+<div class="mt-1 overflow-x-auto">
 	<table class="w-full text-left text-sm whitespace-nowrap">
 		<thead class="text-xs text-dim">
-			<tr><th class="py-1 pr-2">Uke</th><th class="pr-2">Test</th><th class="pr-2">CSS</th><th class="pr-2">FTP</th><th class="pr-2">Svøm</th><th class="pr-2">Sykkel</th><th class="pr-2">Løp</th><th>Totalt</th></tr>
+			<tr><th class="py-1 pr-2">Uke</th><th class="pr-2">Test</th><th class="pr-2">CSS</th><th class="pr-2">FTP</th><th class="pr-2">Svøm</th><th class="pr-2">Sykkel</th><th class="pr-2">Løp</th><th class="pr-2">Totalt</th><th></th></tr>
 		</thead>
 		<tbody class="divide-y divide-line">
 			{#each rader as r (r.uke)}
 				<tr class={r.uke === ukeNa ? 'bg-lys' : ''}>
 					<td class="py-1 pr-2">{r.uke}</td><td class="pr-2">{r.navn}</td><td class="pr-2">{r.css}</td><td class="pr-2">{r.ftp}</td>
-					<td class="pr-2">{r.svom}</td><td class="pr-2">{r.sykkel}</td><td class="pr-2">{r.lop}</td><td class="font-semibold">{r.total}</td>
+					<td class="pr-2">{r.svom}</td><td class="pr-2">{r.sykkel}</td><td class="pr-2">{r.lop}</td><td class="pr-2 font-semibold">{r.total}</td>
+					<td class="whitespace-nowrap">
+						{#if harTest.has(r.uke)}
+							{#if slettUke === r.uke}
+								<button class="rounded-md bg-rod px-2 py-0.5 text-xs font-semibold text-white" onclick={() => slett(r.uke)} disabled={jobber}>Slett</button>
+								<button class="px-1 text-xs text-dim underline" onclick={() => (slettUke = null)}>Avbryt</button>
+							{:else}
+								<button class="px-1 text-dim" onclick={() => fyll(r.uke)} aria-label="Rediger test uke {r.uke}">✎</button>
+								<button class="px-1 text-dim" onclick={() => (slettUke = r.uke)} aria-label="Slett test uke {r.uke}">✕</button>
+							{/if}
+						{/if}
+					</td>
 				</tr>
 			{/each}
 		</tbody>

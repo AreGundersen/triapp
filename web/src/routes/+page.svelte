@@ -2,6 +2,7 @@
 	import { invalidateAll } from '$app/navigation';
 	import Fremgang from '$lib/ui/Fremgang.svelte';
 	import Kort from '$lib/ui/Kort.svelte';
+	import StyrkeListe from '$lib/ui/StyrkeListe.svelte';
 	import {
 		DAGER,
 		DAGER_KORT,
@@ -12,9 +13,12 @@
 		faseFor,
 		fmtHms,
 		formatDato,
+		formatDatoKort,
 		idag,
+		kommendeLop,
 		leggTilDager,
 		mandag,
+		medVekter,
 		prognose,
 		styrkeoktI,
 		ukedag,
@@ -41,6 +45,7 @@
 	const up = $derived(ukeplanRad(uke));
 	const dagensAvh = $derived(avh[dato] ?? { morgen: false, kveld: false });
 	const planAndel = $derived(Math.min(1, Math.max(0, (uke - 1) / 47)));
+	const delmaal = $derived(kommendeLop(dato).filter((l) => l.dato !== LOP));
 
 	const ukeLogg = $derived(data.logg.filter((r) => r.dato >= man && r.dato < leggTilDager(man, 7)));
 	const sumUke = (type: string, felt: 'km' | 'minutter') =>
@@ -101,11 +106,16 @@
 <div class="mt-3">
 	<Fremgang andel={planAndel} tekst="{Math.round(planAndel * 100)} % av planen" />
 </div>
+{#if delmaal.length}
+	<p class="mt-2 text-xs text-dim">
+		{#each delmaal as l, i (l.navn)}{i ? ' · ' : ''}<span class="font-semibold text-ink">{l.navn}</span> om {l.dager} dager ({formatDatoKort(l.dato)}){/each}
+	</p>
+{/if}
 
 {#if feil}<p class="mt-3 text-sm text-rod" role="alert">{feil}</p>{/if}
 
 {#snippet oktkort(slot: 'morgen' | 'kveld', okt: Okt, farge: string, done: boolean)}
-	{@const styrke = styrkeoktI(okt.tekst)}
+	{@const styrke = medVekter(styrkeoktI(okt.tekst) ?? [], data.vekter)}
 	<section class="kort mt-3">
 		<div class="flex items-start justify-between gap-3">
 			<div class="min-w-0">
@@ -124,17 +134,10 @@
 				Utført
 			</label>
 		</div>
-		{#if styrke && styrke.length}
+		{#if styrke.length}
 			<details class="mt-2" open={!done}>
-				<summary class="cursor-pointer text-sm font-semibold text-dim">Øvelser</summary>
-				<ul class="mt-1 flex flex-col gap-1">
-					{#each styrke as r (r.ovelse)}
-						<li class="text-sm">
-							<span class="font-semibold">{r.ovelse}</span>
-							<span class="text-dim"> {r.sett_rep}{r.vekt ? ` · ${r.vekt}` : ''}</span>
-						</li>
-					{/each}
-				</ul>
+				<summary class="cursor-pointer text-sm font-semibold text-dim">Øvelser · trykk på vekten for å endre</summary>
+				<div class="mt-1"><StyrkeListe rader={styrke} supabase={data.supabase} kompakt /></div>
 			</details>
 		{/if}
 	</section>

@@ -23,7 +23,7 @@ legacy/streamlit/         Den gamle Streamlit-prototypen. Slettes når PWA-en er
 
 ### 1. Supabase (database og innlogging)
 1. supabase.com → New project (gratis), region Frankfurt.
-2. SQL Editor → lim inn `supabase/migrations/0001_init.sql` → Run.
+2. SQL Editor → lim inn `supabase/migrations/0001_init.sql` → Run. Gjenta for `0002_styrke_historikk.sql`.
 3. Authentication → Users → **Add user** (e-post + passord). Dette er innloggingen din.
 4. Project Settings → API: kopier **Project URL** og **anon public key**.
 
@@ -44,6 +44,7 @@ npm run dev
 1. Push repoet til et privat GitHub-repo.
 2. vercel.com → New project → velg repoet, **Root Directory: `web`**.
 3. Environment Variables: `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`.
+   Valgfritt for daglig auto-synk (Vercel Cron kl. 04): `SUPABASE_SERVICE_ROLE_KEY` og `CRON_SECRET`.
 4. Deploy. Sett Strava Callback Domain til `<prosjekt>.vercel.app`.
 5. Supabase → Authentication → URL Configuration: Site URL = Vercel-adressen.
 
@@ -61,7 +62,7 @@ Rediger CSV-ene i `data/`, kjør `python scripts/csv_to_json.py`, commit og push
 - `ukeplan.csv` – tall per uke og fokus
 - `ukestruktur.csv` – økter per dag og fase, med klokkeslett
 - `faser.csv` – nøkkeløkter per fase
-- `styrke.csv` – øvelser og vekter
+- `styrke.csv` – øvelser og standardvekter. Vekter du endrer i appen lagres i databasen og overstyrer disse.
 
 ## Utvikling
 ```bash
@@ -77,4 +78,4 @@ Se `web/src/lib/plan/model.ts` → `prognose()`. Svøm = 19 × CSS × 1,08; sykk
 løp = snitt(halvmaraton, Riegel fra 5 km) × 1,22; T1 6 min, T2 3 min.
 
 ## Ikke laget ennå
-Push-varsler, offline-skriving (lesing uten nett fungerer), redigering av vekter i appen, per-bruker plan i databasen.
+Push-varsler, offline-skriving (lesing uten nett fungerer), per-bruker plan i databasen, belastningsvarsel, notat/følelse per økt.

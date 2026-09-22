@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { DAGER_KORT, FASER, STYRKE, UKEPLAN, UKESTRUKTUR, faseFor, formatDatoKort, idag, strukturKolonne, ukeFor, type StrukturKolonne } from '$lib/plan/model';
+	import { DAGER_KORT, FASER, STYRKE, UKEPLAN, UKESTRUKTUR, faseFor, formatDatoKort, idag, medVekter, strukturKolonne, ukeFor, type StrukturKolonne } from '$lib/plan/model';
+	import StyrkeListe from '$lib/ui/StyrkeListe.svelte';
+
+	let { data } = $props();
 
 	const ukeNa = ukeFor(idag());
 	const faseNa = faseFor(ukeNa);
@@ -82,16 +85,19 @@
 		{#each okter as okt (okt)}
 			<details class="kort text-sm">
 				<summary class="cursor-pointer font-semibold">{okt}</summary>
+				<div class="mt-2"><StyrkeListe rader={medVekter(STYRKE.filter((s) => s.okt === okt), data.vekter)} supabase={data.supabase} /></div>
+			</details>
+		{/each}
+		<p class="text-xs text-dim">Trykk på vekten for å endre. Endringer lagres i databasen og vises også på forsiden.</p>
+		{#if data.historikk.length}
+			<details class="kort text-sm">
+				<summary class="cursor-pointer font-semibold">Siste endringer</summary>
 				<ul class="mt-2 divide-y divide-line">
-					{#each STYRKE.filter((s) => s.okt === okt) as s (s.ovelse)}
-						<li class="flex justify-between gap-2 py-1">
-							<span>{s.ovelse}</span>
-							<span class="shrink-0 text-dim">{s.sett_rep}{s.vekt ? ` · ${s.vekt}` : ''}</span>
-						</li>
+					{#each data.historikk as h (h.id)}
+						<li class="flex gap-3 py-1"><span class="w-16 shrink-0 text-dim">{formatDatoKort(h.dato)}</span><span class="flex-1">{h.ovelse}</span><span class="font-semibold">{h.vekt ?? '—'}</span></li>
 					{/each}
 				</ul>
 			</details>
-		{/each}
-		<p class="text-xs text-dim">Vekter redigeres i data/styrke.csv inntil videre.</p>
+		{/if}
 	</div>
 {/if}
